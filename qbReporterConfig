@@ -1,0 +1,9 @@
+#qb configFile
+#enter the column # with no spaces before or after
+# example callerColumn:6
+# if a line is instructions comment it out with a #
+# no blank lines.
+inputFile:QuickbooksReport1.20.14_1.24.14.csv
+callerColumn:3
+clientColumn:2
+timeColumn:7
