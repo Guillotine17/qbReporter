@@ -1,0 +1,4 @@
+ABOUT: qb reporter takes input from the qb reports and organizes it by user and client, will integrate data from tayrex soon.
+
+2.3.14
+need to add things to implement tayrex data. also use python dictionaries instead of lists. may implement today.
