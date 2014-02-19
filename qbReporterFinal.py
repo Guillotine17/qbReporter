@@ -7,7 +7,6 @@ class Client:
 		self.name = name
 		self.time = float(0)
 	def addTime(self, time):
-		print "TIME:" + time
 		self.time = self.time + float(time)
 
 	def getName(self):
@@ -124,63 +123,68 @@ def evaluate(row):
 	else:
 		return True
 
+	
+def main():
+	global clientColumn
+	global callerColumn
+	global timeColumn
+	global clients
+	global callers
+	global currentClient	
 
+	settings = getConfig()
+	#load config
+	inputFile = settings[0]
+	callerColumn = int(settings[1])
+	clientColumn = int(settings[2])
+	timeColumn = int(settings[3])
+	#print settings[3]	
+	
 
-global clientColumn
-global callerColumn
-global timeColumn
-global clients
-global callers
-global currentClient
+	clients = []
+	callers = []
+	currentClient = ''	
 
-settings = getConfig()
-#load config
-inputFile = settings[0]
-callerColumn = int(settings[1])
-clientColumn = int(settings[2])
-timeColumn = int(settings[3])
-print settings[3]
+	with open(inputFile, 'rbU') as f:
+		reader = csv.reader(f)	
 
+		for row in reader:
+			if not evaluate(row):
+				continue
+			currentClient = getClient(row)
+			#print row
+			if currentClient not in clients:
+				update()
+			caller = getCaller(row)
+			found = 0
+			for employee in callers:
+				callerName = employee.getName()
+				if callerName == caller:
+					found = 1
+					employee.addTime(currentClient,getTime(row))
+					break
+			if found == 0:
+				callers.append(Caller(caller))
+				update()
+				callers[-1].addTime(currentClient, getTime(row))	
+	
 
-clients = []
-callers = []
-currentClient = ''
+	########OUTPUT############	
+	
 
-with open(inputFile, 'rbU') as f:
-	reader = csv.reader(f)
-
-	for row in reader:
-		if not evaluate(row):
-			continue
-		currentClient = getClient(row)
-		print row
-		if currentClient not in clients:
-			update()
-		caller = getCaller(row)
-		found = 0
+	with open('csvWriterOutput.csv', 'wb') as csvfile:
+		spamwriter = csv.writer(csvfile, delimiter=',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+		spamwriter.writerow(["caller"] + clients)
 		for employee in callers:
-			callerName = employee.getName()
-			if callerName == caller:
-				found = 1
-				employee.addTime(currentClient,getTime(row))
-				break
-		if found == 0:
-			callers.append(Caller(caller))
-			update()
-			callers[-1].addTime(currentClient, getTime(row))
+			times = []
+			for client in employee.clients:
+				times.append(str(client.time))	
 
+			spamwriter.writerow([employee.name] + times)	
 
-########OUTPUT############
+	#print times
+	return callers
 
+if __name__ == "__main__":
+	main()
 
-with open('csvWriterOutput.csv', 'wb') as csvfile:
-	spamwriter = csv.writer(csvfile, delimiter=',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-	spamwriter.writerow(["caller"] + clients)
-	for employee in callers:
-		times = []
-		for client in employee.clients:
-			times.append(str(client.time))
-
-		spamwriter.writerow([employee.name] + times)
-
-print times

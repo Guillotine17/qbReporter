@@ -1,12 +1,13 @@
 import csv
 import datetime
+import qbReporterFinal
 class entry:
 	def __init__(self, name, count):
 		self.name = name
 		self.count = count
 		self.countbyTime = float(-1)
 
-class tyCaller:
+class TyCaller:
 	def __init__(self, CflRow):
 		self.data = CflRow
 		self.tyName = self.data[0]
@@ -15,6 +16,7 @@ class tyCaller:
 		self.tyTime = -1
 		default = 'NOT FOUND'
 		self.qbName = userDict.get(self.tyName, default)
+		self.workable = -1
 
 #converts the csv reader output into a list of lists to be transposed because tayrex makes no sense
 def getClientFileLists(clientFile):
@@ -160,62 +162,82 @@ def insertTotals(CFL):
 	headerGroupings = getGroupings(headers)
 	return CFL
 
-def getWorkableCount(data):
+def getWorkable(data):
 	totalOpportunities = -1
 	totalNegatives = -1
 	count = 0
 	for header in headers:
-		if header == "Total Opportunity:":
+		if header == 'Total Opportunity:':
 			totalOpportunities = count
 		elif header == "Total Negative:":
 			totalNegatives = count
 			break
 		count += 1
-	workable = data[totalNegatives] + data[totalOpportunities]
-	return workable
+	workable = data[totalOpportunities] + data[totalNegatives]
+	return workable	
 
-#I really need to figure out the proper way to use global variables.
-global userDict 
-global headers
-global headerGroupings
+def main():
+	#I really need to figure out the proper way to use global variables.
+	global userDict 
+	global headers
+	global headerGroupings	
+	global tyCallers
 
-userDict = getUserDict()
-print userDict
-CFL = getClientFileLists('tayrexInput.csv')
-CFL = Transpose(CFL) 
-headers = CFL.pop(0)
-Client = headers.pop(0).split(':')[1].strip()
-headerGroupings = getGroupings(headers)
-CFL = removePercents(CFL)
-printCfl(CFL)
+	userDict = getUserDict()
+	CFL = getClientFileLists('tayrexInput.csv')
+	CFL = Transpose(CFL) 
+	headers = CFL.pop(0)
+	tyClient = headers.pop(0).split(':')[1].strip()
+	headerGroupings = getGroupings(headers)
+	CFL = removePercents(CFL)
+	printCfl(CFL)	
 
-global tyCallers
-tyCallers = []
-for row in CFL:
-	tyCallers.append(tyCaller(row))
-#INSERT TOTALS
-CFL = insertTotals(CFL)
-printCfl(CFL)
-for x in headers:
-	print x
-
-#fill out workablie field for each caller for later calculations
-for caller in tyCallers:
-	caller.workable = getWorkableCount(caller.data)
-
-
-for header in headerGroupings:
-	print header.name
-	print header.locations
-	print
-
-with open('tyReporteroutput.csv', 'wb') as csvfile:
-	spamwriter = csv.writer(csvfile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-	spamwriter.writerow(headers)
+	
+	tyCallers = []
+	for row in CFL:
+		tyCallers.append(TyCaller(row))
+	#INSERT TOTALS
+	CFL = insertTotals(CFL)
+	#printCfl(CFL)
+	'''
+	#for x in headers:
+	#	print x	
+	'''
+	#fill out workable field for each caller for later calculations
+	#Broken how to fix.....
+	print headers
 	for caller in tyCallers:
-		caller.data.append(caller.qbName)
-		spamwriter.writerow(caller.data)
-print "DONE" + str(datetime.datetime)
+		caller.workable = getWorkable(caller.data)	
+
+
+	for header in headerGroupings:
+		print header.name
+		print header.locations
+		print
+
+	#grab the guts from qbReader, the fully updated caller list with clients under.
+	qbCallersList = qbReporterFinal.main()	
+	for tyCaller in tyCallers:
+		for qbCaller in qbCallersList:
+			if tyCaller.qbName == qbCaller.name:
+				for client in qbCaller.clients:
+					if client.name == tyClient:
+						tyCaller.qbTime = client.time
+						break
+
+	with open('tyReporteroutput.csv', 'wb') as csvfile:
+		spamwriter = csv.writer(csvfile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+		spamwriter.writerow(headers)
+		for caller in tyCallers:
+			caller.data.append(caller.qbName)
+			caller.data.append(caller.qbTime) #shady
+			caller.data.append(caller.workable) #shady
+
+			spamwriter.writerow(caller.data)
+	print "DONE" + str(datetime.datetime)
+
+if __name__ == "__main__":
+	main()
 
 
 
