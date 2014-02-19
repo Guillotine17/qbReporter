@@ -176,6 +176,30 @@ def getWorkable(data):
 	workable = data[totalOpportunities] + data[totalNegatives]
 	return workable	
 
+def getOpportunityIndices():
+	trl =[]
+	for entry in headers:
+		if 'Opportunity' in entry:
+			trl.append(headers.index(entry))
+	return trl
+
+
+def insertConversions():
+	global headers
+	global tyCallers
+	opportunityIndices = getOpportunityIndices()
+	opportunityIndices.reverse()
+	for oppIndex in opportunityIndices:
+		oppIndex += 1
+		headers.insert(oppIndex,headers[oppIndex] + ' Conversion:')
+		for tyCaller in tyCallers:
+			if tyCaller.workable == 0:
+				conversion = 0
+			else:
+				conversion =  float(tyCaller.data[oppIndex])/float(tyCaller.workable)
+			tyCaller.data.insert(oppIndex,conversion)
+
+
 def main():
 	#I really need to figure out the proper way to use global variables.
 	global userDict 
@@ -215,7 +239,7 @@ def main():
 		print header.locations
 		print
 
-	#grab the guts from qbReader, the fully updated caller list with clients under.
+	#grab the guts from qbReader, the fully updated caller list with clients under. blech
 	qbCallersList = qbReporterFinal.main()	
 	for tyCaller in tyCallers:
 		for qbCaller in qbCallersList:
@@ -225,8 +249,13 @@ def main():
 						tyCaller.qbTime = client.time
 						break
 
+	insertConversions()
 	with open('tyReporteroutput.csv', 'wb') as csvfile:
 		spamwriter = csv.writer(csvfile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+		headers.append("qbName")
+		headers.append("qbTime")
+		headers.append("workable")
+
 		spamwriter.writerow(headers)
 		for caller in tyCallers:
 			caller.data.append(caller.qbName)

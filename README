@@ -1,5 +1,8 @@
 ABOUT: qb reporter takes input from the qb reports and organizes it by user and client, will integrate data from tayrex soon.
 
+2.19.14
+everything is working nicely, insert conversion rate is up and running, though i have doubts
+about how that will interact with inserting the time calculations. probably just have to do that before I insert the conversion rate etc. gross nested if statements incoming.
 2.18.14
 about to do some serious edits. tyreporter is working for the most part.
 to do list for the evening includes:
