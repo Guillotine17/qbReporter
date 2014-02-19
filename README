@@ -1,4 +1,15 @@
 ABOUT: qb reporter takes input from the qb reports and organizes it by user and client, will integrate data from tayrex soon.
 
+2.18.14
+about to do some serious edits. tyreporter is working for the most part.
+to do list for the evening includes:
+
+1. merge qbreporter and tyreporter
+2. implement get qbTime
+3. implement conversion calculations for each opportunity
+4. set up for multiple files being run.
+
+good luck amirite?
+
 2.3.14
 need to add things to implement tayrex data. also use python dictionaries instead of lists. may implement today.
