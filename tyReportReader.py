@@ -124,7 +124,7 @@ class time:
 #gets the dict of key(tyusername) data qb username	
 def getUserDict():
 	#with open('/Volumes/Shared/VSA/Reporting/UserList/userList.csv', 'rbU') as ul:
-	with open('userList.csv', 'rbU') as ul:
+	with open('userList/userList.csv', 'rbU') as ul:
 		reader = csv.reader(ul)
 		userDict ={}
 		for row in reader:
@@ -258,7 +258,7 @@ def sub(clientFile):
 	global headerGroupings	
 	global tyCallers
 	global client
-	CFL = getClientFileLists(clientFile)
+	CFL = getClientFileLists("tyReports/" + clientFile)
 	CFL = Transpose(CFL) 
 	headers = CFL.pop(0)
 	tyClient = headers.pop(0).split(':')[1].strip()
@@ -311,7 +311,7 @@ def sub(clientFile):
 	insertConversions()
 	insertTimeCalculations()
 	print "CLIENT" + str(client.name)
-	with open(str(tyClient) + "_tyReport.csv", 'wb') as csvfile:
+	with open("outputs/" + str(tyClient) + "_tyReport.csv", 'wb') as csvfile:
 		spamwriter = csv.writer(csvfile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
 		
 
