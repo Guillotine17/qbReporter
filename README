@@ -1,4 +1,4 @@
-ABOUT: qb reporter takes input from the qb reports and organizes it by user and client, will integrate data from tayrex soon.
+ABOUT: qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA.
 
 3.3.14
 accounted for tayrex csvs, 
