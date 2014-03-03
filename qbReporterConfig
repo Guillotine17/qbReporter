@@ -3,7 +3,7 @@
 # example callerColumn:6
 # if a line is instructions comment it out with a #
 # no blank lines.
-inputFile:report for sean 2-19-14.csv
+inputFile:Payroll file - 3-2-14.csv
 callerColumn:3
 clientColumn:2
 timeColumn:7
