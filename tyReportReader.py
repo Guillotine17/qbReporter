@@ -52,7 +52,6 @@ def Transpose(CFL):
 def removePercents(CFL):
 	returnList = []
 	for row in CFL:
-#edit		row.pop(0)
 		if row[0] != '':
 			returnList.append(row)
 	return returnList
@@ -261,10 +260,8 @@ def sub(clientFile):
 	global client
 	CFL = getClientFileLists("tyReports/" + clientFile)
 	tyClient = CFL.pop(0)[0].split(':')[1].strip()
-	# deal with shitty tayrex csvs. error occurs because the 1st line doesnt have all the fields
 	CFL = Transpose(CFL) 
 	headers = CFL.pop(0)
-	#tyClient = headers.pop(0).split(':')[1].strip()
 	headerGroupings = getGroupings(headers)
 	CFL = removePercents(CFL)
 	printCfl(CFL)	
