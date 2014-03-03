@@ -1,5 +1,9 @@
 ABOUT: qb reporter takes input from the qb reports and organizes it by user and client, will integrate data from tayrex soon.
 
+3.3.14
+accounted for tayrex csvs, 
+NEED TO CHANGE (EXISTING) TIME CALCULATIONS TO USE QBTIME
+
 2.19.14
 everything is working nicely, insert conversion rate is up and running, though i have doubts
 about how that will interact with inserting the time calculations. probably just have to do that before I insert the conversion rate etc. gross nested if statements incoming.	
