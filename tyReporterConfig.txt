@@ -1,1 +1,1 @@
-cc_stat_by_batch_rp_affiliated_20140219_133048.csv,"Affiliated Monitoring"
+cc_stat_by_batch_rp_affiliated_20140219_133048.csv,"Affiliated Monitoring",Advance Scale

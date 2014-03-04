@@ -1,4 +1,11 @@
-ABOUT: qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA.
+ABOUT: qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA. now takes multiple qbClients listed after the tyFile, reversed from the original config input.
+
+3.4.14
+still need to change EXISTING time calculations to use qb time
+- other time calculations were still using tyTime. changed to QBtime
+- changed tyConfig to accept multiple client names, this solves the issue where
+	there were multiple qbclients being used by the callers for only one tyClient.
+- Need to implement multiple tyClients per single qbClients in addition to vice versa.
 
 3.3.14
 accounted for tayrex csvs, 

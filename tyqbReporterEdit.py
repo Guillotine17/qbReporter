@@ -11,9 +11,9 @@ class TyCaller:
 	def __init__(self, CflRow):
 		self.data = CflRow
 		self.tyName = self.data[0]
-		self.qbTime = time(self.data[3]).returnDecimal()
+		self.qbTime = float(0)
 		self.qbName = ''
-		self.tyTime = -1
+		self.tyTime = time(self.data[3]).returnDecimal()
 		default = 'NOT FOUND'
 		self.qbName = userDict.get(self.tyName, default)
 		self.workable = -1
@@ -288,7 +288,8 @@ def sub(clientFile):
 			if tyCaller.qbName == qbCaller.name:
 				for qbClient in qbCaller.clients:
 					if qbClient.name in clients:
-						tyCaller.qbTime.addTime(qbClient.time) 
+						tyCaller.qbTime += qbClient.time
+						print tyCaller.qbName + " " + qbClient.name  + " " + str(tyCaller.qbTime)
 						
 
 	headers.append("qbName")
@@ -305,7 +306,6 @@ def sub(clientFile):
 
 	insertConversions()
 	insertTimeCalculations()
-	print "CLIENT" + str(client.name)
 	with open("outputs/" + str(tyClient) + "_tyReport.csv", 'wb') as csvfile:
 		spamwriter = csv.writer(csvfile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
 		
