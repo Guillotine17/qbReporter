@@ -236,6 +236,34 @@ def getConfig():
 			configList.append(row)
 	return configList
 
+#uses qbtime to redo the time calculations before the opportunities
+def redoTimeCalculations():
+	global headers
+	global tyCallers
+
+	index = headers.index("Average Calls Per Hour:")
+	for caller in tyCallers:
+		if caller.qbTime != 0:
+			caller.data[index] = formatFloat(float(caller.data[1])/caller.qbTime)
+		else:
+			caller.data[index] = "qbTime = 0"	
+
+	index = headers.index("Average Time Per Call:")
+	for caller in tyCallers:
+		if caller.qbTime != 0:
+			caller.data[index] = formatFloat(caller.qbTime/float(caller.data[1]))
+		else:
+			caller.data[index] = "qbTime = 0"
+	index = headers.index("Average Time Per Contact:")
+	for caller in tyCallers:
+		if caller.qbTime != 0:
+			caller.data[index] = formatFloat(caller.qbTime/float(caller.data[2]))
+		else:
+			caller.data[index] = "qbTime = 0"
+	index = headers.index("Average Calls Per Contact:")
+	for caller in tyCallers:
+		caller.data[index] = formatFloat(float(caller.data[1])/float(caller.data[2]))
+	
 
 def main():
 
@@ -252,6 +280,7 @@ def main():
 		tyFile = entry.pop(0)
 		clients = entry
 		sub(tyFile)
+
 
 def sub(clientFile):
 	global headers
@@ -291,7 +320,7 @@ def sub(clientFile):
 						tyCaller.qbTime += qbClient.time
 						print tyCaller.qbName + " " + qbClient.name  + " " + str(tyCaller.qbTime)
 						
-
+	redoTimeCalculations()					
 	headers.append("qbName")
 	headers.append("qbTime")
 	headers.append("Workable")
