@@ -1,4 +1,6 @@
-ABOUT: qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA. now takes multiple qbClients listed after the tyFile, reversed from the original config input.
+#ABOUT: 
+====
+qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA. now takes multiple qbClients listed after the tyFile, reversed from the original config input.
 
 3.4.14
 still need to change EXISTING time calculations to use qb time
@@ -15,8 +17,7 @@ NEED TO CHANGE (EXISTING) TIME CALCULATIONS TO USE QBTIME
 everything is working nicely, insert conversion rate is up and running, though i have doubts
 about how that will interact with inserting the time calculations. probably just have to do that before I insert the conversion rate etc. gross nested if statements incoming.	
 2.18.14
-about to do some serious edits. tyreporter is working for the most part.
-to do list for the evening includes:
+about to do some serious edits. tyreporter is working for the most part. to do list for the evening includes:
 
 1. merge qbreporter and tyreporter
 2. implement get qbTime
