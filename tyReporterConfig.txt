@@ -1,1 +1,13 @@
-cc_stat_by_batch_rp_affiliated_20140219_133048.csv,"Affiliated Monitoring",Advance Scale
+cc_stat_by_batch_rp_affiliated_20140219_133048.csv,Affiliated Monitoring
+cc_stat_by_batch_rp_avg_20140219_133219.csv,AVG,AVG Direct
+cc_stat_by_batch_rp_halfthesky_20140219_133554.csv,Half The Sky
+cc_stat_by_batch_rp_hap_20140219_133441.csv,"HAP - 111 NE Radiology","HAP - AMC Radiology Coding","HAP - MW Coding","HAP - SE Coding"
+cc_stat_by_batch_rp_isotrak_20140219_133646.csv,"Isotrak, Ltd."
+cc_stat_by_batch_rp_onsite_340b_20140219_133824.csv,"Onsite 340B, LLC"
+cc_stat_by_batch_rp_phs_20140219_133931.csv,PHS.
+cc_stat_by_batch_rp_phshospital_20140219_134012.csv,PHS.
+cc_stat_by_batch_rp_preferredmedicalsystems_20140219_134148.csv,Preferred Medical Systems
+cc_stat_by_batch_rp_primax_20140219_134314.csv,Primax,"Primax - Project 37"
+cc_stat_by_batch_rp_prohost_20140219_134502.csv,ProHost Dining
+cc_stat_by_batch_rp_starjack_20140219_134558.csv,Starjack Entertainment
+cc_stat_by_batch_rp_trinity_20140219_134655.csv,Trinity Pharmacy Services
