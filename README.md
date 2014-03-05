@@ -1,7 +1,8 @@
 #ABOUT: 
 qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA. now takes multiple qbClients listed after the tyFile, reversed from the original config input.
 
-
+####3.5.14
+today is the day when i fix the time calculations before opportunities, I may have figured out the solution to the tayrex file merging issue, if I had a list of all possible opportunities etc, i could just cycle through them and look for hits while adding things up. merging times will be a bit more of an issue. the issue of the math behind merging the %s is irrelevant since they will be recalculated anyway using the correct time entries from quickbooks.
 
 ####3.4.14
 still need to change EXISTING time calculations to use qb time
