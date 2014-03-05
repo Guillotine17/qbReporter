@@ -1,6 +1,7 @@
 #ABOUT: 
-====
 qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA. now takes multiple qbClients listed after the tyFile, reversed from the original config input.
+
+
 
 ####3.4.14
 still need to change EXISTING time calculations to use qb time
