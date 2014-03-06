@@ -281,7 +281,7 @@ def main():
 		clients = entry
 		sub(tyFile)
 
-
+# used to be main, had to encapsulate for multiple runs of different files.
 def sub(clientFile):
 	global headers
 	global headerGroupings	
@@ -330,7 +330,7 @@ def sub(clientFile):
 		caller.data.append(caller.qbName)
 		caller.data.append(caller.qbTime)
 		caller.data.append(caller.workable)
-		caller.data.append(caller.qbTime - caller.tyTime) #VERY BROKEN FIX PLS
+		caller.data.append(caller.qbTime - caller.tyTime) #fixed, Tayrex time was being used everywhere and qb time remained -1. no longer.
 
 
 	insertConversions()
@@ -348,5 +348,25 @@ def sub(clientFile):
 if __name__ == "__main__":
 	main()
 
+'''
+
+list for use when joining tayrex files.
+
+"On-Site Appointment",
+"Phone Call Appointment",
+"Send Information -Client follow up phone call",
+"Requested Information",
+"Sent info only",
+"Left Message",
+"No Message",
+"Duplicate Record",
+"Wrong #/Disconnected #",
+"Not Interested",
+"Not Qualified for Client",
+"linked record",
+"FYI",
+"Existing Customer of Client",
+"Take Off",
+'''
 
 
