@@ -17,6 +17,8 @@ class TyCaller:
 		default = 'NOT FOUND'
 		self.qbName = userDict.get(self.tyName, default)
 		self.workable = -1
+		self.dict = {}
+		self.outputList = []
 
 
 #converts the csv reader output into a list of lists to be transposed because tayrex makes no sense
@@ -203,7 +205,7 @@ def insertConversions():
 				conversion = formatPercentage(conversion)
 			tyCaller.data.insert(oppIndex + 1, conversion)
 
-
+#should still work without insert conversion even being run.
 def getTimeIndices():
 	trl = []
 	for header in headers:
@@ -264,6 +266,28 @@ def redoTimeCalculations():
 	for caller in tyCallers:
 		caller.data[index] = formatFloat(float(caller.data[1])/float(caller.data[2]))
 	
+def populateOutputHeader():
+	
+	outputHeader = []
+
+	outputHeader.append(["Caller:", "Number Of Calls:", "Number Of Contacts:", "Caller Time:", "Average Calls Per Hour:"])
+
+	for entry in headers:
+		if "Opportunity" in entry:
+			outputHeader.append(entry)
+	
+	for entry in headers:
+		if "Total" in entry and entry not in outputHeader:
+			outputHeader.append(entry)
+
+	outputHeader.append("qbName")
+	outputHeader.append("qbTime")
+	outputHeader.append("Workable")
+	outputHeader.append("qbTime-tyTime")
+
+	return(outputHeader)
+
+
 
 def main():
 
@@ -321,6 +345,7 @@ def sub(clientFile):
 						print tyCaller.qbName + " " + qbClient.name  + " " + str(tyCaller.qbTime)
 						
 	redoTimeCalculations()					
+	
 	headers.append("qbName")
 	headers.append("qbTime")
 	headers.append("Workable")
@@ -333,15 +358,29 @@ def sub(clientFile):
 		caller.data.append(caller.qbTime - caller.tyTime) #fixed, Tayrex time was being used everywhere and qb time remained -1. no longer.
 
 
-	insertConversions()
+	#commented out for valerie format 
+	#insertConversions()
+
 	insertTimeCalculations()
+
+	#populate caller Dict.
+	for index in range(len(headers) - 1):
+		for caller in tyCallers:
+			caller.dict[header[index]] = caller.data[index]
+
+	outputHeader = populateOutputHeader()
+
+	for caller in tyCallers:
+		for entry in outputHeader:
+			caller.outputList.append(caller.dict)
+
 	with open("outputs/" + str(tyClient) + "_tyReport.csv", 'wb') as csvfile:
 		spamwriter = csv.writer(csvfile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
 		
 
-		spamwriter.writerow(headers)
+		spamwriter.writerow(outputHeader)
 		for caller in tyCallers:
-			spamwriter.writerow(caller.data)
+			spamwriter.writerow(caller.outputList)
 
 	print "DONE" 
 
