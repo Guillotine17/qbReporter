@@ -1,17 +1,9 @@
-cc_stat_by_batch_rp_advancescale_20140303_143419.csv,Advance Scale,
-cc_stat_by_batch_rp_affiliated_20140303_143515.csv,Affiliated Monitoring,
-cc_stat_by_batch_rp_avg_20140303_143612.csv,AVG,AVG Direct
-cc_stat_by_batch_rp_axcesshoseandladder_20140303_143709.csv,"Axcess Hose & Ladder Company, Inc.",
-cc_stat_by_batch_rp_halfthesky_20140303_143956.csv,Half The Sky,
-cc_stat_by_batch_rp_hap_20140303_143815.csv,"HAP - 111 NE Radiology","HAP - AMC Radiology Coding","HAP - MW Coding","HAP - SE Coding"
-cc_stat_by_batch_rp_integratedtechnologyservices_20140303_144128.csv,Integrated Technology Services,
-cc_stat_by_batch_rp_isotrak_20140303_144038.csv,"Isotrak, Ltd.",
-cc_stat_by_batch_rp_morisoncogen_20140303_144218.csv,Morison Cogen - Benefit Audits,Morison Cogen - non profit,
-cc_stat_by_batch_rp_nationalpowersource_20140303_144315.csv,National Power Source,
-cc_stat_by_batch_rp_onsite_340b_20140303_144409.csv,"Onsite 340B, LLC",
-cc_stat_by_batch_rp_phs_20140303_144455.csv,PHS.,
-cc_stat_by_batch_rp_phshospital_20140303_144537.csv,PHS.,
-cc_stat_by_batch_rp_preferredmedicalsystems_20140303_144633.csv,Preferred Medical Systems,
-cc_stat_by_batch_rp_primax_20140303_144734.csv,Primax - Project 37,Primax,
-cc_stat_by_batch_rp_prohost_20140303_144829.csv,ProHost Dining,
-cc_stat_by_batch_rp_starjack_20140303_144914.csv,Starjack Entertainment,
+cc_stat_by_batch_rp_affiliated_20140401_115813.csv,Affiliated Monitoring
+cc_stat_by_batch_rp_avg_20140401_115911.csv,AVG,AVG Direct
+cc_stat_by_batch_rp_hap_20140401_115036.csv,HAP - 111 NE Radiology,HAP - AMC Radiology Coding,HAP - MW Coding,HAP - NE Coding,HAP - NE Rad Onc - Carlson,HAP - NJ Radiology,HAP - SE Coding,HAP - Southeast Radiology
+cc_stat_by_batch_rp_integratedtechnologyservices_20140401_120038.csv,Integrated Technology Services
+cc_stat_by_batch_rp_isotrak_20140401_115445.csv,"Isotrak, Ltd."
+cc_stat_by_batch_rp_monacolange_20140401_115717.csv,Monaco Lange
+cc_stat_by_batch_rp_phs_20140401_114610.csv,PHS.
+cc_stat_by_batch_rp_phshospital_20140401_114839.csv,PHS.
+cc_stat_by_batch_rp_trinity_20140401_115608.csv,Trinity Pharmacy Services

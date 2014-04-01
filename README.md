@@ -1,6 +1,9 @@
 #ABOUT: 
 qbReporter takes input from the qb reports and organizes it by user and client. tyReportReader takes the data from qbReporter and compares it to the tayrex data to output data useful for caller QA. now takes multiple qbClients listed after the tyFile, reversed from the original config input.
 
+####4.1.14
+User data is now loaded into a dictionary with the header as the key. this makes life a lot easier when the time comes to output the data in order. a list must be made that will dictate the order and which elements of caller.data will end up in the actual output file
+
 ####3.31.14
 going to make a bunch of changes to start formatting to Valeries liking, commenting out a lot of the results and calculations. 3.31.14 may need to be reverted to in the future. 
 
@@ -21,6 +24,7 @@ NEED TO CHANGE (EXISTING) TIME CALCULATIONS TO USE QBTIME
 ####2.19.14
 everything is working nicely, insert conversion rate is up and running, though i have doubts
 about how that will interact with inserting the time calculations. probably just have to do that before I insert the conversion rate etc. gross nested if statements incoming.	
+
 ####2.18.14
 about to do some serious edits. tyreporter is working for the most part. to do list for the evening includes:
 

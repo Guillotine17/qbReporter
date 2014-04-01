@@ -264,13 +264,19 @@ def redoTimeCalculations():
 			caller.data[index] = "qbTime = 0"
 	index = headers.index("Average Calls Per Contact:")
 	for caller in tyCallers:
-		caller.data[index] = formatFloat(float(caller.data[1])/float(caller.data[2]))
+		if caller.qbTime != 0:
+			caller.data[index] = formatFloat(float(caller.data[1])/float(caller.data[2]))
+		else:
+			caller.data[index] = "qbTime = 0"
 	
 def populateOutputHeader():
 	
 	outputHeader = []
 
-	outputHeader.append(["Caller:", "Number Of Calls:", "Number Of Contacts:", "Caller Time:", "Average Calls Per Hour:"])
+	toAppend = ["Caller:", "Number Of Calls:", "Number Of Contacts:", "qbTime", "Average Calls Per Hour:"]
+
+	for each in toAppend:
+		outputHeader.append(each)
 
 	for entry in headers:
 		if "Opportunity" in entry:
@@ -364,15 +370,15 @@ def sub(clientFile):
 	insertTimeCalculations()
 
 	#populate caller Dict.
-	for index in range(len(headers) - 1):
+	for index in range(len(headers)):
 		for caller in tyCallers:
-			caller.dict[header[index]] = caller.data[index]
+			caller.dict[headers[index]] = caller.data[index]
 
 	outputHeader = populateOutputHeader()
 
 	for caller in tyCallers:
 		for entry in outputHeader:
-			caller.outputList.append(caller.dict)
+			caller.outputList.append(caller.dict[entry])
 
 	with open("outputs/" + str(tyClient) + "_tyReport.csv", 'wb') as csvfile:
 		spamwriter = csv.writer(csvfile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
@@ -386,26 +392,5 @@ def sub(clientFile):
 
 if __name__ == "__main__":
 	main()
-
-'''
-
-list for use when joining tayrex files.
-
-"On-Site Appointment",
-"Phone Call Appointment",
-"Send Information -Client follow up phone call",
-"Requested Information",
-"Sent info only",
-"Left Message",
-"No Message",
-"Duplicate Record",
-"Wrong #/Disconnected #",
-"Not Interested",
-"Not Qualified for Client",
-"linked record",
-"FYI",
-"Existing Customer of Client",
-"Take Off",
-'''
 
 
