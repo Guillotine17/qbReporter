@@ -4,6 +4,5 @@ cc_stat_by_batch_rp_hap_20140401_115036.csv,HAP - 111 NE Radiology,HAP - AMC Rad
 cc_stat_by_batch_rp_integratedtechnologyservices_20140401_120038.csv,Integrated Technology Services
 cc_stat_by_batch_rp_isotrak_20140401_115445.csv,"Isotrak, Ltd."
 cc_stat_by_batch_rp_monacolange_20140401_115717.csv,Monaco Lange
-cc_stat_by_batch_rp_phs_20140401_114610.csv,PHS.
-cc_stat_by_batch_rp_phshospital_20140401_114839.csv,PHS.
+phsmerge.csv,PHS.
 cc_stat_by_batch_rp_trinity_20140401_115608.csv,Trinity Pharmacy Services

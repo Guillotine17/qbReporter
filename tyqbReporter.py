@@ -221,7 +221,7 @@ def insertTimeCalculations():
 	timeIndices = getTimeIndices()
 	timeIndices.reverse()
 	for index in timeIndices:
-		headers.insert(index + 1, "TIME :" +headers[index])
+		headers.insert(index + 1, headers[index] + "/Hour")
 		for caller in tyCallers:
 			if caller.qbTime > 0:
 				oppByTime = float(caller.data[index])/float(caller.qbTime)
@@ -269,30 +269,32 @@ def redoTimeCalculations():
 		else:
 			caller.data[index] = "qbTime = 0"
 	
-def populateOutputHeader():
+def populateGuideHeader():
 	
-	outputHeader = []
+	GuideHeader = []
 
-	toAppend = ["Caller:", "Number Of Calls:", "Number Of Contacts:", "qbTime", "Average Calls Per Hour:"]
+	toAppend = ["Caller:", "qbName", "Number Of Calls:", "qbTime", "Average Calls Per Hour:"]
 
 	for each in toAppend:
-		outputHeader.append(each)
+		GuideHeader.append(each)
 
 	for entry in headers:
 		if "Opportunity" in entry:
-			outputHeader.append(entry)
+			GuideHeader.append(entry)
 	
 	for entry in headers:
-		if "Total" in entry and entry not in outputHeader:
-			outputHeader.append(entry)
+		if "Total" in entry and entry not in GuideHeader:
+			GuideHeader.append(entry)
 
-	outputHeader.append("qbName")
-	outputHeader.append("qbTime")
-	outputHeader.append("Workable")
-	outputHeader.append("qbTime-tyTime")
 
-	return(outputHeader)
+	return(GuideHeader)
 
+#the first 4 rows are really manual based on toAppend from the populate guideHeader method.
+#this is just the more interpretable version of the guide header that is actually written to the output.
+def populateOutputHeader(GuideHeader):
+	outputHeader = ["tyName","Caller","Calls","Hours","Calls/Hour"]
+	outputHeader = outputHeader + GuideHeader[5:]
+	return outputHeader
 
 
 def main():
@@ -374,10 +376,11 @@ def sub(clientFile):
 		for caller in tyCallers:
 			caller.dict[headers[index]] = caller.data[index]
 
-	outputHeader = populateOutputHeader()
+	GuideHeader = populateGuideHeader()
+	outputHeader = populateOutputHeader(GuideHeader)
 
 	for caller in tyCallers:
-		for entry in outputHeader:
+		for entry in GuideHeader:
 			caller.outputList.append(caller.dict[entry])
 
 	with open("outputs/" + str(tyClient) + "_tyReport.csv", 'wb') as csvfile:
