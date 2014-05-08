@@ -1,8 +1,6 @@
-cc_stat_by_batch_rp_affiliated_20140401_115813.csv,Affiliated Monitoring
-cc_stat_by_batch_rp_avg_20140401_115911.csv,AVG,AVG Direct
-cc_stat_by_batch_rp_hap_20140401_115036.csv,HAP - 111 NE Radiology,HAP - AMC Radiology Coding,HAP - MW Coding,HAP - NE Coding,HAP - NE Rad Onc - Carlson,HAP - NJ Radiology,HAP - SE Coding,HAP - Southeast Radiology
-cc_stat_by_batch_rp_integratedtechnologyservices_20140401_120038.csv,Integrated Technology Services
-cc_stat_by_batch_rp_isotrak_20140401_115445.csv,"Isotrak, Ltd."
-cc_stat_by_batch_rp_monacolange_20140401_115717.csv,Monaco Lange
-phsmerge.csv,PHS.
-cc_stat_by_batch_rp_trinity_20140401_115608.csv,Trinity Pharmacy Services
+cc_stat_by_batch_rp_bbmindustries_20140505_112231.csv,BBM Industries
+cc_stat_by_batch_rp_halfthesky_20140505_112316.csv,Half The Sky
+cc_stat_by_batch_rp_monacolange_20140505_112345.csv,Monaco Lange
+cc_stat_by_batch_rp_onsite_340b_20140505_112409.csv,"Onsite 340B, LLC"
+cc_stat_by_batch_rp_preferredmedicalsystems_20140505_112539.csv,Preferred Medical Systems
+cc_stat_by_batch_rp_prohost_20140505_112618.csv,ProHost Dining

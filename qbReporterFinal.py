@@ -7,7 +7,8 @@ class Client:
 		self.name = name
 		self.time = float(0)
 	def addTime(self, time):
-		self.time = self.time + float(time)
+		if time != "":
+			self.time = self.time + float(time)
 
 	def getName(self):
 		return self.name

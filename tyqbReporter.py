@@ -252,19 +252,19 @@ def redoTimeCalculations():
 
 	index = headers.index("Average Time Per Call:")
 	for caller in tyCallers:
-		if caller.qbTime != 0:
+		if float(caller.data[1]) != 0:
 			caller.data[index] = formatFloat(caller.qbTime/float(caller.data[1]))
 		else:
 			caller.data[index] = "qbTime = 0"
 	index = headers.index("Average Time Per Contact:")
 	for caller in tyCallers:
-		if caller.qbTime != 0:
+		if float(caller.data[2]) != 0:
 			caller.data[index] = formatFloat(caller.qbTime/float(caller.data[2]))
 		else:
 			caller.data[index] = "qbTime = 0"
 	index = headers.index("Average Calls Per Contact:")
 	for caller in tyCallers:
-		if caller.qbTime != 0:
+		if float(caller.data[2]) != 0:
 			caller.data[index] = formatFloat(float(caller.data[1])/float(caller.data[2]))
 		else:
 			caller.data[index] = "qbTime = 0"
